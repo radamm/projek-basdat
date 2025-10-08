@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Profil Saya')
+
 @section('content')
 <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
     <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-        <div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-8">
+        {{-- Header dengan Warna Baru --}}
+        <div class="bg-gradient-to-r from-[#073763] to-[#04223b] px-6 py-8">
             <h1 class="text-2xl font-bold text-white">Profil Saya</h1>
-            <p class="text-blue-100 mt-2">Kelola informasi profil dan keamanan akun Anda</p>
+            <p class="text-gray-200 mt-2">Kelola informasi profil dan keamanan akun Anda</p>
         </div>
 
         <div class="p-6 space-y-8">
@@ -15,8 +18,7 @@
                 </div>
             @endif
 
-            <!-- Profile Information -->
-            <div class="bg-gray-50 rounded-xl p-6">
+            <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4">Informasi Profil</h2>
                 
                 <form method="POST" action="{{ route('profile.update') }}">
@@ -34,24 +36,24 @@
                         
                         <div>
                             <label for="nim" class="block text-sm font-medium text-gray-700 mb-2">NIM</label>
-                            <input type="text" value="{{ $user->nim }}" class="form-input bg-gray-100" readonly>
+                            <input type="text" value="{{ $user->nim }}" class="form-input bg-gray-200 cursor-not-allowed" readonly>
                         </div>
                         
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email" value="{{ $user->email }}" class="form-input bg-gray-100" readonly>
+                            <input type="email" value="{{ $user->email }}" class="form-input bg-gray-200 cursor-not-allowed" readonly>
                         </div>
                         
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">No. Telepon</label>
-                            <input type="text" name="phone" id="phone" value="{{ old('phone', $user->phone) }}" class="form-input">
+                            <input type="text" name="phone" id="phone" value="{{ old('phone', $user->phone) }}" class="form-input" placeholder="Belum diisi">
                             @error('phone')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
                     
-                    <div class="mt-6">
+                    <div class="mt-6 flex justify-end">
                         <button type="submit" class="btn-primary">
                             Simpan Perubahan
                         </button>
@@ -59,8 +61,7 @@
                 </form>
             </div>
 
-            <!-- Change Password -->
-            <div class="bg-gray-50 rounded-xl p-6">
+            <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4">Ubah Password</h2>
                 
                 <form method="POST" action="{{ route('profile.password') }}">
@@ -71,7 +72,7 @@
                         <div>
                             <label for="current_password" class="block text-sm font-medium text-gray-700 mb-2">Password Lama</label>
                             <input type="password" name="current_password" id="current_password" class="form-input">
-                            @error('current_password')
+                            @error('current_password', 'updatePassword')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
@@ -79,7 +80,7 @@
                         <div>
                             <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password Baru</label>
                             <input type="password" name="password" id="password" class="form-input">
-                            @error('password')
+                             @error('password', 'updatePassword')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
@@ -90,8 +91,8 @@
                         </div>
                     </div>
                     
-                    <div class="mt-6">
-                        <button type="submit" class="btn-secondary">
+                    <div class="mt-6 flex justify-end">
+                        <button type="submit" class="btn-primary">
                             Ubah Password
                         </button>
                     </div>

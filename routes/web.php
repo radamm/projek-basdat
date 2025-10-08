@@ -71,8 +71,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/reports/{report}', [ReportController::class, 'show'])->name('reports.show');
         Route::get('/reports/{report}/edit', [ReportController::class, 'edit'])->name('reports.edit');
         Route::put('/reports/{report}', [ReportController::class, 'update'])->name('reports.update');
-        Route::delete('/reports/{report}', [ReportController::class, 'destroy'])->name('reports.destroy');
         Route::put('/reports/{report}/validate', [ReportController::class, 'validate'])->name('reports.validate');
+        Route::delete('/reports/{report}', [ReportController::class, 'destroy'])->name('reports.destroy');
 
         // Claim Actions
         Route::get('/claims/{claim}', [ClaimController::class, 'show'])->name('claims.show'); // Tambahan jika admin perlu lihat detail klaim

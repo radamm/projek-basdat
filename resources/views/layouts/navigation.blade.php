@@ -1,9 +1,8 @@
-<nav class="bg-gradient-to-r from-blue-600 to-blue-700 shadow-lg fixed w-full top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="bg-gradient-to-r from-[#741B47] via-[#073763] to-[#04223b] shadow-lg fixed w-full top-0 z-50">    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <a href="@if(Auth::user()->role == 'admin') {{ route('admin.dashboard') }} @elseif(Auth::user()->role == 'petugas') {{ route('petugas.dashboard') }} @else {{ route('reports.index') }} @endif" class="text-white text-xl font-bold">
+                    <a href="@if(Auth::user()->role == 'admin') {{ route('admin.dashboard') }} @elseif(Auth::user()->role == 'petugas') {{ route('petugas.dashboard') }} @else {{ route('dashboard') }} @endif" class="text-white text-xl font-bold">
                         Lost & Found
                     </a>
                 </div>

@@ -38,8 +38,8 @@
                     <option value="found" {{ request('type') === 'found' ? 'selected' : '' }}>Temuan</option>
                 </select>
             </div>
-            <button type="submit" class="btn-secondary">Filter</button>
-            <a href="{{ route('reports.index') }}" class="btn-secondary">Reset</a>
+            <button type="submit" class="btn-primary">Filter</button>
+            <a href="{{ route('reports.index') }}" class="btn-primary">Reset</a>
         </form>
     </div>
 

@@ -217,6 +217,7 @@ class ReportController extends Controller
         return redirect()->back()->with('success', 'Laporan berhasil dihapus.');
     }
 
+
     public function validation(Request $request)
     {
 

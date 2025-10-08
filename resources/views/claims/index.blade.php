@@ -25,7 +25,7 @@
                 </select>
             </div>
             <button type="submit" class="btn-primary">Filter</button>
-            <a href="{{ route('claims.index') }}" class="btn-outline">Reset</a>
+            <a href="{{ route('claims.index') }}" class="btn-primary">Reset</a>
         </form>
     </div>
 
@@ -90,7 +90,7 @@
                                 {{ $claim->created_at->format('d/m/Y H:i') }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('claims.show', $claim) }}" class="text-blue-600 hover:text-blue-900">
+                                <a href="{{ route('claims.show', $claim) }}" class="btn-secondary-sm">
                                     Detail
                                 </a>
                             </td>

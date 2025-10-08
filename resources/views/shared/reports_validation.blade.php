@@ -198,9 +198,10 @@
                                     class="btn-warning-sm">
                                         Edit
                                     </a>
-                                    <form action="{{ Auth::user()->role === 'admin' ? route('admin.reports.destroy', $report) : route('reports.destroy', $report) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin hapus?');">
-                                        @csrf @method('DELETE')
-                                        <button type="submit" class="btn-danger-sm">Hapus</button>
+                                    <form action="{{ Auth::user()->role === 'admin' ? route('admin.reports.destroy', $report->id) : route('petugas.reports.destroy', $report->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')  <!-- Ini sangat penting agar Laravel menganggap ini sebagai DELETE request -->
+                                        <button type="submit" class="btn btn-danger">Hapus Laporan</button>
                                     </form>
                                 @endif
                             </div>
@@ -279,16 +280,18 @@ function showValidationModal(reportId, reportName) {
     const form = document.getElementById('validationForm');
     document.getElementById('reportName').textContent = reportName;
 
-    // PERBAIKAN 4: ACTION FORM DI JAVASCRIPT MENJADI DINAMIS
-    @if(Auth::user()->role === 'admin')
+    // Tentukan action form secara dinamis menggunakan JavaScript
+    if ({{ auth()->user()->role === 'admin' ? 'true' : 'false' }}) {
         form.action = `/admin/reports/${reportId}/validate`;
-    @elseif(Auth::user()->role === 'petugas')
+    } else {
         form.action = `/petugas/reports/${reportId}/validate`;
-    @endif
-    
+    }
+
+    // Tampilkan modal
     document.getElementById('validationModal').classList.remove('hidden');
     document.getElementById('validationModal').classList.add('flex');
 }
+
 
 function closeValidationModal() {
     document.getElementById('validationModal').classList.add('hidden');
